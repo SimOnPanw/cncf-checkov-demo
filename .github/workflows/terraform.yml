@@ -47,13 +47,7 @@ jobs:
       if: always() 
       run: |
         mkdir junit-reports
-        ls -la
-        echo -e "ECHO JOIN"
         echo """$CHECKOV_RESULTS""" >> junit-reports/TEST-Checkov.xml
-        echo -e "LS"
-        ls -la junit-reports/
-        echo -e "CAT FILE"
-        cat junit-reports/TEST-*.xml
 
     - name: Publish Test Report
       uses: mikepenz/action-junit-report@v2
