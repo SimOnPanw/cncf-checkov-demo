@@ -48,13 +48,11 @@ jobs:
       run: |
         mkdir junit-reports
         ls -la
-        echo -e "ECHO STEP\n"
-        echo ${{ steps.checkov.outputs.* }}
-        echo -e "CAT STEP\n"
-        cat ${{ steps.checkov.outputs.* }} > junit-reports/TEST-Checkov.xml
-        echo -e "LS UNIT STEP\n"
+        echo -e "CAT JOIN"
+        cat ${{join(steps.checkov.outputs.*, '\n')}} > junit-reports/TEST-Checkov.xml
+        echo -e "LS"
         ls -la junit-reports/
-        echo -e "CAT LAST STEP\n"
+        echo -e "CAT FILE"
         cat junit-reports/TEST-*.xml
 
     - name: Publish Test Report
