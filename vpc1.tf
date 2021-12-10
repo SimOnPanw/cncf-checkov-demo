@@ -1,6 +1,9 @@
 resource "aws_kms_key" "my_key" {
   description             = "KMS key for CloudWatch"
   deletion_window_in_days = 10
+  tags = {
+    yor_trace = "e8e021ab-a9fe-4b25-a099-198b940d5416"
+  }
 }
 
 resource "aws_cloudwatch_log_group" "cloudwatch-vpc-flowlog" {
