@@ -43,12 +43,19 @@ jobs:
         output_format: junitxml # optional: the output format, one of: cli, json, junitxml, github_failed_only
         download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
         
+    - name: Output test from checkov to xml file
+      if: always() # always run even if the previous step fails
+      run: |
+        mkdir junit-reports
+        echo ${{join(steps.checkov.outputs.*, '\n')}} >> **/junit-reports/TEST-Checkov.xml
+        ls **/junit-reports/
+        cat **/junit-reports/TEST-*.xml
 
     - name: Publish Test Report
       uses: mikepenz/action-junit-report@v2
       if: always() # always run even if the previous step fails
       with:
-        report_paths: ${{join(steps.checkov.outputs.*, '\n')}}
+        report_paths: "**/junit-reports/TEST-*.xml"
         
     
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
