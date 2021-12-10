@@ -34,15 +34,21 @@ jobs:
       id: checkov
       uses: bridgecrewio/checkov-action@master
       with:
-        directory: /
+        directory: .
         # check: CKV_AWS_1 # optional: run only a specific check_id. can be comma separated list
         skip_check: CKV_AWS_2 # optional: skip a specific check_id. can be comma separated list
         quiet: false # optional: display only failed checks
-        soft_fail: true # optional: do not return an error code if there are failed checks
+        soft_fail: false # optional: do not return an error code if there are failed checks
         framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
         output_format: junitxml # optional: the output format, one of: cli, json, junitxml, github_failed_only
         download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
-        log_level: DEBUG # optional: set log level. Default WARNING
+        log_leve;l: DEBUG # optional: set log level. Default WARNING
+
+    - name: Publish Test Report
+      uses: mikepenz/action-junit-report@v2
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: '**/*.xml'
         
     
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
