@@ -1,0 +1,97 @@
+#!/bin/bash
+
+echo """<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="1" tests="17" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_41/Ensure no hard coded AWS access key and secret key exists in provider" skipped="0" tests="1" time="0" package="checkov.terraform.checks.provider.aws.credentials">
+		<testcase name="terraform CKV_AWS_41/Ensure no hard coded AWS access key and secret key exists in provider aws.default" classname="checkov.terraform.checks.provider.aws.credentials" file="/provider.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_33/Ensure KMS key policy does not contain wildcard (*) principal" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.KMSKeyWildcardPrincipal">
+		<testcase name="terraform CKV_AWS_33/Ensure KMS key policy does not contain wildcard (*) principal aws_kms_key.my_key" classname="checkov.terraform.checks.resource.aws.KMSKeyWildcardPrincipal" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_158/Ensure that CloudWatch Log Group is encrypted by KMS" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.CloudWatchLogGroupKMSKey">
+		<testcase name="terraform CKV_AWS_158/Ensure that CloudWatch Log Group is encrypted by KMS aws_cloudwatch_log_group.cloudwatch-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.CloudWatchLogGroupKMSKey" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_66/Ensure that CloudWatch Log Group specifies retention days" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.CloudWatchLogGroupRetention">
+		<testcase name="terraform CKV_AWS_66/Ensure that CloudWatch Log Group specifies retention days aws_cloudwatch_log_group.cloudwatch-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.CloudWatchLogGroupRetention" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_61/Ensure IAM role allows only specific principals in account to assume it" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMRoleAllowAssumeFromAccount">
+		<testcase name="terraform CKV_AWS_61/Ensure IAM role allows only specific principals in account to assume it aws_iam_role.iam-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMRoleAllowAssumeFromAccount" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_60/Ensure IAM role allows only specific services or principals to assume it" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMRoleAllowsPublicAssume">
+		<testcase name="terraform CKV_AWS_60/Ensure IAM role allows only specific services or principals to assume it aws_iam_role.iam-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMRoleAllowsPublicAssume" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_63/Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMStarActionPolicyDocument">
+		<testcase name="terraform CKV_AWS_63/Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions aws_iam_role_policy.role-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMStarActionPolicyDocument" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_62/Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMAdminPolicyDocument">
+		<testcase name="terraform CKV_AWS_62/Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created aws_iam_role_policy.role-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMAdminPolicyDocument" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_130/Ensure VPC subnets do not assign public IP by default" skipped="0" tests="4" time="0" package="checkov.terraform.checks.resource.aws.SubnetPublicIP">
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_private_az1" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_private_az2" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_public_az1" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_public_az2" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV2_AWS_11/Ensure VPC flow logging is enabled in all VPCs" skipped="0" tests="1" time="0" package="checkov.common.graph.checks_infra.base_check">
+		<testcase name="terraform CKV2_AWS_11/Ensure VPC flow logging is enabled in all VPCs aws_vpc.vpc1" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV2_AWS_12/Ensure the default security group of every VPC restricts all traffic" skipped="0" tests="1" time="0" package="checkov.common.graph.checks_infra.base_check">
+		<testcase name="terraform CKV2_AWS_12/Ensure the default security group of every VPC restricts all traffic aws_vpc.vpc1" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV2_AWS_19/Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances" skipped="0" tests="2" time="0" package="checkov.common.graph.checks_infra.base_check">
+		<testcase name="terraform CKV2_AWS_19/Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances aws_eip.vpc1_nat_az1" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+		<testcase name="terraform CKV2_AWS_19/Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances aws_eip.vpc1_nat_az2" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="1" name="CKV_AWS_7/Ensure rotation for customer created CMKs is enabled" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.KMSRotation">
+		<testcase name="terraform CKV_AWS_7/Ensure rotation for customer created CMKs is enabled aws_kms_key.my_key" classname="checkov.terraform.checks.resource.aws.KMSRotation" file="/vpc1.tf">
+			<failure type="failure" message="Resource aws_kms_key.my_key failed in check CKV_AWS_7/Ensure rotation for customer created CMKs is enabled - /vpc1.tf:[1, 7] - Guideline: https://docs.bridgecrew.io/docs/logging_8"/>
+		</testcase>
+	</testsuite>
+</testsuites>
+<testsuites disabled="0" errors="0" failures="1" tests="17" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_41/Ensure no hard coded AWS access key and secret key exists in provider" skipped="0" tests="1" time="0" package="checkov.terraform.checks.provider.aws.credentials">
+		<testcase name="terraform CKV_AWS_41/Ensure no hard coded AWS access key and secret key exists in provider aws.default" classname="checkov.terraform.checks.provider.aws.credentials" file="/provider.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_33/Ensure KMS key policy does not contain wildcard (*) principal" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.KMSKeyWildcardPrincipal">
+		<testcase name="terraform CKV_AWS_33/Ensure KMS key policy does not contain wildcard (*) principal aws_kms_key.my_key" classname="checkov.terraform.checks.resource.aws.KMSKeyWildcardPrincipal" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_158/Ensure that CloudWatch Log Group is encrypted by KMS" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.CloudWatchLogGroupKMSKey">
+		<testcase name="terraform CKV_AWS_158/Ensure that CloudWatch Log Group is encrypted by KMS aws_cloudwatch_log_group.cloudwatch-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.CloudWatchLogGroupKMSKey" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_66/Ensure that CloudWatch Log Group specifies retention days" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.CloudWatchLogGroupRetention">
+		<testcase name="terraform CKV_AWS_66/Ensure that CloudWatch Log Group specifies retention days aws_cloudwatch_log_group.cloudwatch-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.CloudWatchLogGroupRetention" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_61/Ensure IAM role allows only specific principals in account to assume it" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMRoleAllowAssumeFromAccount">
+		<testcase name="terraform CKV_AWS_61/Ensure IAM role allows only specific principals in account to assume it aws_iam_role.iam-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMRoleAllowAssumeFromAccount" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_60/Ensure IAM role allows only specific services or principals to assume it" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMRoleAllowsPublicAssume">
+		<testcase name="terraform CKV_AWS_60/Ensure IAM role allows only specific services or principals to assume it aws_iam_role.iam-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMRoleAllowsPublicAssume" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_63/Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMStarActionPolicyDocument">
+		<testcase name="terraform CKV_AWS_63/Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions aws_iam_role_policy.role-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMStarActionPolicyDocument" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_62/Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.IAMAdminPolicyDocument">
+		<testcase name="terraform CKV_AWS_62/Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created aws_iam_role_policy.role-vpc-flowlog" classname="checkov.terraform.checks.resource.aws.IAMAdminPolicyDocument" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV_AWS_130/Ensure VPC subnets do not assign public IP by default" skipped="0" tests="4" time="0" package="checkov.terraform.checks.resource.aws.SubnetPublicIP">
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_private_az1" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_private_az2" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_public_az1" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+		<testcase name="terraform CKV_AWS_130/Ensure VPC subnets do not assign public IP by default aws_subnet.vpc1_public_az2" classname="checkov.terraform.checks.resource.aws.SubnetPublicIP" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV2_AWS_11/Ensure VPC flow logging is enabled in all VPCs" skipped="0" tests="1" time="0" package="checkov.common.graph.checks_infra.base_check">
+		<testcase name="terraform CKV2_AWS_11/Ensure VPC flow logging is enabled in all VPCs aws_vpc.vpc1" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV2_AWS_12/Ensure the default security group of every VPC restricts all traffic" skipped="0" tests="1" time="0" package="checkov.common.graph.checks_infra.base_check">
+		<testcase name="terraform CKV2_AWS_12/Ensure the default security group of every VPC restricts all traffic aws_vpc.vpc1" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="0" name="CKV2_AWS_19/Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances" skipped="0" tests="2" time="0" package="checkov.common.graph.checks_infra.base_check">
+		<testcase name="terraform CKV2_AWS_19/Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances aws_eip.vpc1_nat_az1" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+		<testcase name="terraform CKV2_AWS_19/Ensure that all EIP addresses allocated to a VPC are attached to EC2 instances aws_eip.vpc1_nat_az2" classname="checkov.common.graph.checks_infra.base_check" file="/vpc1.tf"/>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="1" name="CKV_AWS_7/Ensure rotation for customer created CMKs is enabled" skipped="0" tests="1" time="0" package="checkov.terraform.checks.resource.aws.KMSRotation">
+		<testcase name="terraform CKV_AWS_7/Ensure rotation for customer created CMKs is enabled aws_kms_key.my_key" classname="checkov.terraform.checks.resource.aws.KMSRotation" file="/vpc1.tf">
+			<failure type="failure" message="Resource aws_kms_key.my_key failed in check CKV_AWS_7/Ensure rotation for customer created CMKs is enabled - /vpc1.tf:[1, 7] - Guideline: https://docs.bridgecrew.io/docs/logging_8"/>
+		</testcase>
+	</testsuite>
+</testsuites>
