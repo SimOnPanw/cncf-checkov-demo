@@ -44,13 +44,13 @@ jobs:
         download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
         
     - name: Output test from checkov to xml file
-      if: always() # always run even if the previous step fails
-      shell: bash
+      if: always() 
       run: |
         mkdir junit-reports
-        echo ${{join(steps.checkov.outputs.*, '\n')}} >> **/junit-reports/TEST-Checkov.xml
-        ls **/junit-reports/
-        cat **/junit-reports/TEST-*.xml
+        ls -la
+        echo """${{join(steps.checkov.outputs.*, '\n')}}""" > junit-reports/TEST-Checkov.xml
+        ls -la junit-reports/
+        cat junit-reports/TEST-*.xml
 
     - name: Publish Test Report
       uses: mikepenz/action-junit-report@v2
