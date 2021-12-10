@@ -42,7 +42,7 @@ jobs:
         framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
         output_format: junitxml # optional: the output format, one of: cli, json, junitxml, github_failed_only
         download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
-        log_leve;l: DEBUG # optional: set log level. Default WARNING
+        outputs: "Checkov-Root-Report.xml"
 
     - name: Publish Test Report
       uses: mikepenz/action-junit-report@v2
