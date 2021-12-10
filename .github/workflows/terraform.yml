@@ -45,6 +45,7 @@ jobs:
         
     - name: Output test from checkov to xml file
       if: always() # always run even if the previous step fails
+      shell: bash
       run: |
         mkdir junit-reports
         echo ${{join(steps.checkov.outputs.*, '\n')}} >> **/junit-reports/TEST-Checkov.xml
